@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
-function App() {
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import { useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+
+import { RootState } from './core/store/configureStore';
+import locale from './locale';
+import Example from './view/Example';
+import Homepage from './view/Homepage';
+import PageNotFound from './view/PageNotFound';
+
+const App: React.FC = () => {
+  const language = useSelector((state: RootState) => state.setting.language);
+  const memoLanguageData = React.useMemo(() => locale[language], [language]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IntlProvider locale={language} messages={memoLanguageData}>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/example" element={<Example />} />
+        <Route path="*" element={<PageNotFound />} />
+        <Route path="teams/:teamId" element={<Homepage />} />
+        <Route path="teams/new" element={<Example />} />
+      </Routes>
+    </IntlProvider>
   );
-}
+};
 
 export default App;
