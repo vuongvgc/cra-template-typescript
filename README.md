@@ -7,11 +7,11 @@ To use this template, add `--template typescript` when creating a new app.
 For example:
 
 ```sh
-npx create-react-app my-app --template typescript git+https://github.com/facebook/create-react-app.git
+npx create-react-app my-app --template typescript git+https://github.com/vuongvgc/cra-template-typescript.git
 
 # or
 
-yarn create react-app my-app --template typescript
+yarn create react-app my-app --template typescript git+https://github.com/vuongvgc/cra-template-typescript.git
 ```
 
 For more information, please refer to:
