@@ -10,7 +10,7 @@ For example:
 npx create-react-app my-app --template git+https://github.com/vuongvgc/cra-template-typescript.git
 
 # or
-
+```sh
 yarn create react-app my-app --template  git+https://github.com/vuongvgc/cra-template-typescript.git
 ```
 
